@@ -58,5 +58,11 @@ export default class AirPlayPlugin extends UICorePlugin {
   render() {
     this.$el.html('ICON')
     this.airPlaySupported || this.$el.hide()
+    var fullscreenButton = this.core.mediaControl.$fullscreenToggle
+    if (fullscreenButton.length) {
+      this.$el.insertAfter(fullscreenButton)
+    } else {
+      this.core.mediaControl.$('media-control-right-panel').prepend(this.el)
+    }
   }
 }
