@@ -14,8 +14,14 @@ export default class AirPlayPlugin extends UICorePlugin {
     }
   }
 
+  constructor(...args) {
+    super(...args)
+    this.render()
+  }
+
   bindEvents() {
     this.listenTo(this.core, Events.CORE_CONTAINERS_CREATED, this.containersCreated)
+    this.listenTo(this.core.mediaControl, Events.MEDIACONTROL_RENDERED, this.render)
   }
 
   containersCreated() {
