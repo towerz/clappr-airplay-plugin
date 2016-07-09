@@ -24,7 +24,7 @@ export default class AirPlayPlugin extends UICorePlugin {
       }
       this._container = container
       this._playback = container.playback
-      addAvailabilityListener()
+      this.addAvailabilityListener()
     }
   }
 
