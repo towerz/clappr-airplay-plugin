@@ -4,6 +4,8 @@ export default class AirPlayPlugin extends UICorePlugin {
   static get version() { return VERSION }
   get name() { return 'air_play' }
 
+  get airPlaySupported() { return window.WebKitPlaybackTargetAvailabilityEvent && this._playback.name === 'html5_video' }
+
   get tagName() { return 'button' }
 
   get events() {
@@ -41,17 +43,20 @@ export default class AirPlayPlugin extends UICorePlugin {
         }
       }
     }
-    if (window.WebKitPlaybackTargetAvailabilityEvent && this._playback.name === 'html5_video') {
+    if (this.airPlaySupported) {
       this._playback.el.addEventListener('webkitplaybacktargetavailabilitychanged', this._availabilityListener)
       this._playback.el["x-webkit-airplay"]="allow"
     }
   }
 
   clicked() {
-    this._playback.el.webkitShowPlaybackTargetPicker()
+    if (this.airPlaySupported) {
+      this._playback.el.webkitShowPlaybackTargetPicker()
+    }
   }
 
   render() {
-    this.$el.html('TESTE')
+    this.$el.html('ICON')
+    this.airPlaySupported || this.$el.hide()
   }
 }
