@@ -6,7 +6,7 @@
   "scripts": {
     "build": "node_modules/.bin/webpack --progress",
     "release": "node_modules/.bin/webpack --progress -d --optimize-minimize --optimize-dedupe --output-filename clappr-playlist-plugin.min.js",
-    "start": "node_modules/.bin/webpack-dev-server --content-base public/ --output-public-path /latest --hot",
+    "start": "node_modules/.bin/webpack-dev-server --host 0.0.0.0 --content-base public/ --output-public-path /latest --hot",
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "node_modules/.bin/webpack --progress --watch"
   },
