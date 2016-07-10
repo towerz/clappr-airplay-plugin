@@ -50,6 +50,7 @@ export default class AirPlayPlugin extends UICorePlugin {
         }
       }
     }
+    this.$el.hide()
     if (this.airPlaySupported) {
       this._playback.el.addEventListener('webkitplaybacktargetavailabilitychanged', this._availabilityListener)
       this._playback.el["x-webkit-airplay"]="allow"
