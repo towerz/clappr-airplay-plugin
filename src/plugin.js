@@ -4,7 +4,7 @@ export default class AirPlayPlugin extends UICorePlugin {
   static get version() { return VERSION }
   get name() { return 'air_play' }
 
-  get airPlaySupported() { return window.WebKitPlaybackTargetAvailabilityEvent && this._playback.name === 'html5_video' }
+  get airPlaySupported() { return window.WebKitPlaybackTargetAvailabilityEvent && this._playback && this._playback.name === 'html5_video' }
 
   get tagName() { return 'button' }
 
