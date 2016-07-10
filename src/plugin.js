@@ -21,7 +21,7 @@ export default class AirPlayPlugin extends UICorePlugin {
 
   bindEvents() {
     this.listenTo(this.core, Events.CORE_CONTAINERS_CREATED, this.containersCreated)
-    this.listenTo(this.core.mediaControl, Events.MEDIACONTROL_RENDERED, this.render)
+    this.listenTo(this.core.mediaControl, Events.MEDIACONTROL_RENDERED, this.attachButton)
   }
 
   containersCreated() {
@@ -61,14 +61,18 @@ export default class AirPlayPlugin extends UICorePlugin {
     }
   }
 
-  render() {
-    this.$el.html('ICON')
-    this.airPlaySupported || this.$el.hide()
+  attachButton() {
     var fullscreenButton = this.core.mediaControl.$fullscreenToggle
     if (fullscreenButton.length) {
       this.$el.insertAfter(fullscreenButton)
     } else {
       this.core.mediaControl.$('media-control-right-panel').prepend(this.el)
     }
+  }
+
+  render() {
+    this.$el.html('ICON')
+    this.airPlaySupported || this.$el.hide()
+    this.attachButton()
   }
 }
