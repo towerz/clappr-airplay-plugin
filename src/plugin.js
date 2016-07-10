@@ -1,4 +1,4 @@
-import {Events, UICorePlugin} from 'Clappr'
+import {Events, Log, UICorePlugin} from 'Clappr'
 
 export default class AirPlayPlugin extends UICorePlugin {
   static get version() { return VERSION }
@@ -43,6 +43,7 @@ export default class AirPlayPlugin extends UICorePlugin {
   addAvailabilityListener() {
     if (!this._availabilityListener) {
       this._availabilityListener = (event) => {
+        Log.debug(this.name, 'availability:', event.availability)
         switch (event.availability) {
           case "available": this.$el.show(); break;
           case "not-available": this.$el.hide(); break;
