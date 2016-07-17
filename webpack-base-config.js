@@ -13,6 +13,9 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader'
         // config in .babelrc
+      },
+      {
+        test: /\.svg/, loader: 'svg-inline'
       }
     ],
   },
