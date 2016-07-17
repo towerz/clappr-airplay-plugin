@@ -1,5 +1,7 @@
 import {Events, Log, UICorePlugin} from 'Clappr'
 
+import icon from 'public/icon.svg'
+
 export default class AirPlayPlugin extends UICorePlugin {
   static get version() { return VERSION }
   get name() { return 'air_play' }
@@ -7,6 +9,13 @@ export default class AirPlayPlugin extends UICorePlugin {
   get airPlaySupported() { return window.WebKitPlaybackTargetAvailabilityEvent && this._playback && this._playback.name === 'html5_video' }
 
   get tagName() { return 'button' }
+
+  get attributes() {
+    return {
+      class: 'media-control-button',
+      'data-airplay': ''
+    }
+  }
 
   get events() {
     return {
@@ -73,7 +82,8 @@ export default class AirPlayPlugin extends UICorePlugin {
   }
 
   render() {
-    this.$el.html('ICON')
+    this.$el.empty()
+    this.$el.append(icon)
     this.airPlaySupported || this.$el.hide()
     this.attachButton()
   }
