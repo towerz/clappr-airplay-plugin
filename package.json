@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "node_modules/.bin/webpack --progress",
-    "release": "node_modules/.bin/webpack --progress -d --optimize-minimize --optimize-dedupe --output-filename clappr-playlist-plugin.min.js",
+    "release": "node_modules/.bin/webpack --progress -d --optimize-minimize --optimize-dedupe --output-filename clappr-airplay-plugin.min.js",
     "start": "node_modules/.bin/webpack-dev-server --host 0.0.0.0 --content-base public/ --output-public-path /latest --hot",
     "watch": "node_modules/.bin/webpack --progress --watch"
   },
